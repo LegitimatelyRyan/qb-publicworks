@@ -6,7 +6,7 @@ description("Provides public works related RP functions to QB-Core")
 version("0.1")
 
 shared_scripts({
-	"",
+	"config.lua",
 })
 
 client_scripts({
