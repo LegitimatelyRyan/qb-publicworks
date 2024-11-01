@@ -94,6 +94,6 @@ Citizen.CreateThread(function()
 			BreakStreetLight()
 		end
 
-		Wait(5000)
+		Wait(Config.TimeBetweenBreaks * 60000)
 	end
 end)

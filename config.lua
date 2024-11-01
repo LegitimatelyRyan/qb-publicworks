@@ -6,6 +6,7 @@ Config.MaxStreetLightsOut = 1 -- Maximum number of street lights that can be out
 Config.TimeoutBeforeLightsClear = 30 -- Time in minutes before a call "clears" aka gets set back to working
 Config.BreakTrafficLights = true
 Config.BreakStreetLights = true
+Config.TimeBetweenBreaks = 5 -- Time in MINUTES before the loop attempts to break another light
 
 Config.QBJobs = {
 	"DOT",
