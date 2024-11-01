@@ -7,6 +7,7 @@ Config.TimeoutBeforeLightsClear = 30 -- Time in minutes before a call "clears" a
 Config.BreakTrafficLights = true
 Config.BreakStreetLights = true
 Config.TimeBetweenBreaks = 5 -- Time in MINUTES before the loop attempts to break another light
+Config.MinimumWorkersRequired = 1
 
 Config.QBJobs = {
 	"DOT",

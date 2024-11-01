@@ -1,3 +1,12 @@
+--[[
+	server.lua
+	Manages serversided events & coordination for qb-publicworks.
+
+	couldthisberyan & baited
+	qb-publicworks
+	November 1st, 2024
+]]
+
 local TrafficLights = {}
 local StreetLights = {}
 local BrokenTLights = {}
@@ -17,6 +26,29 @@ local function IsTrafficLight(entity)
 		return true
 	end
 	return false
+end
+
+--  Return a list of currently on duty players from the QB jobs
+---@return table
+local function GetPlayersOnDuty()
+	local Players = {}
+	for _, Job in pairs(Config.QBJobs) do
+		for _, Player in pairs(QBCore.Functions.GetPlayersOnDuty(Job)) do
+			Players[#Players + 1] = Player
+		end
+	end
+
+	return Players
+end
+
+-- Function purely COUNTS the amount, this mostly is helpful in doing a singular check
+local function GetCurrentNumberofPW()
+	local DOT = 0
+	for _, Job in pairs(Config.QBJobs) do
+		DOT = DOT + #QBCore.Functions.GetPlayersOnDuty(Job)
+	end
+
+	return DOT
 end
 
 local function IsStreetLight(entity)
@@ -88,16 +120,17 @@ Citizen.CreateThread(function()
 
 	-- Once the objects have been retrieved it will then start this timed loop.
 	while true do
-		-- If broken traffic lights are less than the config max then it will break a street light.
-		if Config.MaxTrafficLightsOut < #BrokenTLights then
-			BreakTrafficLight()
-		end
+		if GetCurrentNumberofPW() >= Config.MinimumWorkersRequires then
+			-- If broken traffic lights are less than the config max then it will break a street light.
+			if Config.MaxTrafficLightsOut < #BrokenTLights then
+				BreakTrafficLight()
+			end
 
-		-- If broken street lights are less than the config max then it will break a street light.
-		if Config.MaxStreetLightsOut < #BrokenSLights then
-			BreakStreetLight()
+			-- If broken street lights are less than the config max then it will break a street light.
+			if Config.MaxStreetLightsOut < #BrokenSLights then
+				BreakStreetLight()
+			end
 		end
-
 		Wait(Config.TimeBetweenBreaks * 60000)
 	end
 end)
