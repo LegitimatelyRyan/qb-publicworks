@@ -70,8 +70,8 @@ local function BreakTrafficLight()
 	local selectedLight = TrafficLights[math.random(#TrafficLights)]
 
 	-- Utilizes recursion to then always select a unique light entity.
-	if lib.table.contains(BrokenSLights, selectedLight) then
-		BreakStreetLight()
+	if lib.table.contains(BrokenTLights, selectedLight) then
+		BreakTrafficLight()
 	end
 
 	-- Sets this traffic light to have no lighting.
