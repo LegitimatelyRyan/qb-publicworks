@@ -9,19 +9,6 @@ Config.BreakStreetLights = true -- Set this to false if you dont want street lig
 Config.TimeBetweenBreaks = 5 -- Time in MINUTES before the loop attempts to break another light
 Config.MinimumWorkersRequired = 1 -- Minimum required people to be on duty before the code starts breaking things
 
-Config.DispatchSystem = ""
---[[
-	"auto" = It will look for the resources or default to "Custom"
-	"ps" = ps-dispatch
-	"qb" = qb-dispatch
-	"custom" = Integrate your own dispatch script into the resource using the bridge structure.
-]]
-
---## PS-Dispatch Configurations ##--
-Config.DispatchCode = ""
-Config.Sprite = 64
-Config.Color = 2
-
 Config.QBJobs = {
 	"DOT",
 	"LTA",
@@ -66,3 +53,18 @@ Config.StreetLights = {
 	`prop_snow_streetlight_09`,
 	`prop_snow_streetlight_01_frag_`,
 }
+
+Config.DispatchSystem = "auto"
+--[[
+	"auto" = It will look for the resources or default to "custom"
+	"ps" = ps-dispatch
+	"cd" = cd_dispatch
+	"custom" = Integrate your own dispatch script into the resource using the bridge structure.
+]]
+
+Config.Blip = {}
+
+Config.Blip.Sprite = 64
+Config.Blip.Scale = 1.0
+Config.Blip.Colour = 2
+Config.Blip.Duration = 5

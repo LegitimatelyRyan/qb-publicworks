@@ -1,24 +1,24 @@
 local Bridge = {}
 
 function Bridge.SendEmergencyAlert()
-	TriggerServerEvent("cd_dispatch:AddNotification", {
-		job_table = { "police" },
-		coords = data.coords,
-		title = "10-15 - Store Robbery",
-		message = "A " .. data.sex .. " robbing a store at " .. data.street,
-		flash = 0,
-		unique_id = data.unique_id,
-		sound = 1,
-		blip = {
-			sprite = 431,
-			scale = 1.2,
-			colour = 3,
-			flashes = false,
-			text = "911 - Store Robbery",
-			time = 5,
-			radius = 0,
-		},
-	})
+    TriggerClientEvent("cd_dispatch:AddNotification", -1, {
+        job_table = Config.QBJobs,
+        coords = coords,
+        title = "311",
+        message = alert,
+        flash = 0,
+        unique_id = tostring(math.random(0000000, 9999999)), -- Pulled from their documentation, weird way of doing it but okay :thumbsup:
+        sound = 1,
+        blip = {
+			sprite = Config.Blip.Sprite,
+			scale = Config.Blip.Scale,
+			colour = Config.Blip.Colour,
+            flashes = false,
+            text = "311 - " .. alert
+			time = Config.Blip.Duration,
+            radius = 0,
+        }
+    })
 end
 
 return Bridge
