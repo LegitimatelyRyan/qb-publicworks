@@ -4,10 +4,10 @@ Config = {}
 Config.MaxTrafficLightsOut = 1 -- Maximum number of traffic lights that can be out at any given time
 Config.MaxStreetLightsOut = 1 -- Maximum number of street lights that can be out at any given time
 Config.TimeoutBeforeLightsClear = 30 -- Time in minutes before a call "clears" aka gets set back to working
-Config.BreakTrafficLights = true
-Config.BreakStreetLights = true
+Config.BreakTrafficLights = true -- Set this to false if you dont want traffic lights to break
+Config.BreakStreetLights = true -- Set this to false if you dont want street lights to break
 Config.TimeBetweenBreaks = 5 -- Time in MINUTES before the loop attempts to break another light
-Config.MinimumWorkersRequired = 1
+Config.MinimumWorkersRequired = 1 -- Minimum required people to be on duty before the code starts breaking things
 
 Config.QBJobs = {
 	"DOT",
