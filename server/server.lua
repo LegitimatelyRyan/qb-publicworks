@@ -53,6 +53,10 @@ local function BreakStreetLight()
 	-- Selects a random street light from the server.
 	local selectedLight = StreetLights[math.random(#StreetLights)]
 
+	if lib.table.contains(BrokenSLights, selectedLight) then
+		BreakStreetLight()
+	end
+
 	-- Sets this street light to have no lighting.
 	SetEntityTrafficlightOverride(selectedLight, 3)
 
