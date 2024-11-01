@@ -37,6 +37,11 @@ local function BreakTrafficLight()
 	-- Selects a random traffic light from the server.
 	local selectedLight = TrafficLights[math.random(#TrafficLights)]
 
+	-- Utilizes recursion to then always select a unique light entity.
+	if lib.table.contains(BrokenSLights, selectedLight) then
+		BreakStreetLight()
+	end
+
 	-- Sets this traffic light to have no lighting.
 	SetEntityTrafficlightOverride(selectedLight, 3)
 
@@ -53,6 +58,7 @@ local function BreakStreetLight()
 	-- Selects a random street light from the server.
 	local selectedLight = StreetLights[math.random(#StreetLights)]
 
+	-- Utilizes recursion to then always select a unique light entity.
 	if lib.table.contains(BrokenSLights, selectedLight) then
 		BreakStreetLight()
 	end
@@ -98,6 +104,7 @@ Citizen.CreateThread(function()
 			BreakStreetLight()
 		end
 
+		-- TODO: Check if someone of the Config.QBJobs is active otherwise just end this loop and only call it if someone is active.
 		Wait(Config.TimeBetweenBreaks * 60000)
 	end
 end)
