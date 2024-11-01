@@ -1,6 +1,6 @@
 local Bridge = {}
 
-function Bridge.SendEmergencyAlert(alert)
+function Bridge.SendEmergencyAlert(alert, coords)
 	TriggerServerEvent("ps-dispatch:server:notify", {
 		message = alert,
 		codeName = "311",
