@@ -54,13 +54,14 @@ Config.StreetLights = {
 	`prop_snow_streetlight_01_frag_`,
 }
 
-Config.DispatchSystem = "auto"
 --[[
 	"auto" = It will look for the resources or default to "custom"
 	"ps" = ps-dispatch
 	"cd" = cd_dispatch
 	"custom" = Integrate your own dispatch script into the resource using the bridge structure.
 ]]
+
+Config.DispatchSystem = "auto"
 
 Config.Blip = {}
 
