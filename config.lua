@@ -9,7 +9,13 @@ Config.BreakStreetLights = true -- Set this to false if you dont want street lig
 Config.TimeBetweenBreaks = 5 -- Time in MINUTES before the loop attempts to break another light
 Config.MinimumWorkersRequired = 1 -- Minimum required people to be on duty before the code starts breaking things
 
-Config.DispatchSystem = "" -- PS-Dispatch, QB-Dispatch, Standalone
+Config.DispatchSystem = ""
+--[[
+	"auto" = It will look for the resources or default to "Custom"
+	"ps" = ps-dispatch
+	"qb" = qb-dispatch
+	"custom" = Integrate your own dispatch script into the resource using the bridge structure.
+]]
 
 --## PS-Dispatch Configurations ##--
 Config.DispatchCode = ""
