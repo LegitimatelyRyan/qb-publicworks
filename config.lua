@@ -9,6 +9,11 @@ Config.BreakStreetLights = true -- Set this to false if you dont want street lig
 Config.TimeBetweenBreaks = 5 -- Time in MINUTES before the loop attempts to break another light
 Config.MinimumWorkersRequired = 1 -- Minimum required people to be on duty before the code starts breaking things
 
+--## PS-Dispatch Configurations ##--
+Config.DispatchCode = ""
+Config.Sprite = 64
+Config.Color = 2
+
 Config.QBJobs = {
 	"DOT",
 	"LTA",
