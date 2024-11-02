@@ -9,6 +9,9 @@ Pulbic Works Job for QB-Core Framework 👷
 These are not required and the script will run as intended, but built in functionality is included for the following software.
 - [ps-dispatch](https://github.com/Project-Sloth/ps-dispatch)
 - [cd-dispatch](https://codesign.pro/package/4206357)
+- [ps-ui](https://github.com/Project-Sloth/ps-ui)
+- [bl_ui](https://github.com/Byte-Labs-Studio/bl_ui)
+
 
 ## Screenshots
 ![Example](https://example.com/)
