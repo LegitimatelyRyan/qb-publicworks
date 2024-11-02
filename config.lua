@@ -63,6 +63,12 @@ Config.StreetLights = {
 
 Config.DispatchSystem = "auto"
 
+--[[
+	"bl_ui" = https://github.com/Byte-Labs-Studio/bl_ui
+	"ps-ui" = https://github.com/Project-Sloth/ps-ui
+]]
+Config.Minigame = ""
+
 Config.Blip = {}
 
 Config.Blip.Sprite = 64
