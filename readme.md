@@ -1,5 +1,5 @@
 # qb-publicworks
-Pulbic Works Job for QB-Core Framework 👷
+Public Works Job for QB-Core Framework 👷
 
 ## Dependencies
 - [qb-core](https://github.com/qbcore-framework/qb-core)
