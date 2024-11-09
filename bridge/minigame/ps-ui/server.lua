@@ -11,7 +11,7 @@ local Bridge = {}
 
 local function Bridge.ChooseMinigame()
     -- Array of minigame types
-    local minigameTypes = { "Maze", "Circle", "Scrambler", "VarHack", "Thermite" }
+    local minigameTypes = { "Maze", "Circle", "Scrambler", "Thermite" }
     
     -- Selects a random minigame type and returns it for it to be used to repair the fault.
     local selectedMinigame = minigameTypes[math.random(1, #minigameTypes)]
