@@ -10,18 +10,7 @@
 local Bridge = {}
 
 -- Function to merge data if resource state is valid
-local function mergeIfResourceActive(resourceName, custom)
-	if custom then
-		-- Gets data.
-		local data = require(resourceName .. ".server")
-
-		-- Checks if data exists and then merges the tables.
-		if data then
-			lib.table.merge(Bridge, data)
-			return true
-		end
-	end
-
+local function mergeIfResourceActive(resourceName)
 	if GetResourceState(resourceName) == "started" or GetResourceState(resourceName) == "starting" then
 		-- Gets data.
 		local data = require(resourceName .. ".server")
@@ -32,21 +21,22 @@ local function mergeIfResourceActive(resourceName, custom)
 			return true
 		end
 	end
+	print("Bridge: Resource " .. resourceName .. " is not active.")
 	return false
 end
 
 -- Function to handle resources based on Config and fallback options
 local function integrateResources(resourceList, resource)
-	if resource ~= "" then
-		-- If a specific Config.Dispatch or Config.Minigame is defined
-		mergeIfResourceActive(resource, (resource == "custom"))
-	else
-		-- If no specific config, iterate through default integrations.
+	if resource == "auto" then
+		-- If Config is set to auto, iterate through resourceList
 		for _, resourceName in ipairs(resourceList) do
 			if mergeIfResourceActive(resourceName) then
 				break
 			end
 		end
+	else
+		-- If Config is set to a specific resource
+		mergeIfResourceActive(resource)
 	end
 end
 
