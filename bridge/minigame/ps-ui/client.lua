@@ -7,7 +7,7 @@
     Date: November 9th, 2024
 ]]
 
-local function StartMinigameMaze()
+function StartMinigameMaze()
 	exports["ps-ui"]:Maze(function(success)
 		if success then
 			print("success")
@@ -20,7 +20,7 @@ local function StartMinigameMaze()
     ]]
 end
 
-local function StartMinigameCircle()
+function StartMinigameCircle()
 	exports["ps-ui"]:Circle(function(success)
 		if success then
 			print("success")
@@ -34,7 +34,7 @@ local function StartMinigameCircle()
     ]]
 end
 
-local function StartMinigameScrambler()
+function StartMinigameScrambler()
 	exports["ps-ui"]:Scrambler(function(success)
 		if success then
 			print("success")
@@ -49,7 +49,7 @@ local function StartMinigameScrambler()
     ]]
 end
 
-local function StartMinigameThermite()
+function StartMinigameThermite()
 	exports["ps-ui"]:Thermite(function(success)
 		if success then
 			print("success")
@@ -63,15 +63,3 @@ local function StartMinigameThermite()
     3 argument (Integer): Incorrect Blocks
     ]]
 end
-
-RegisterNetEvent("qb-publicworks:PlayMinigame:client", function(minigameType)
-	if minigameType == "Maze" then
-		StartMinigameMaze()
-	elseif minigameType == "Circle" then
-		StartMinigameCircle()
-	elseif minigameType == "Scrambler" then
-		StartMinigameScrambler()
-	elseif minigameType == "Thermite" then
-		StartMinigameThermite()
-	end
-end)
