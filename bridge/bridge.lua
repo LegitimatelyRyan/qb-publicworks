@@ -10,6 +10,9 @@
 local Bridge = {}
 
 -- Function to merge data if resource state is valid
+---@param resourceName string
+---@param type number
+---@return boolean
 local function mergeIfResourceActive(resourceName, type)
 	if GetResourceState(resourceName) == "started" or GetResourceState(resourceName) == "starting" then
 		-- Gets data.
@@ -26,6 +29,9 @@ local function mergeIfResourceActive(resourceName, type)
 end
 
 -- Function to handle resources based on Config and fallback options
+---@param resourceList table
+---@param resource string
+---@param type number
 local function integrateResources(resourceList, resource, type)
 	if resource == "auto" then
 		-- If Config is set to auto, iterate through resourceList

@@ -14,6 +14,8 @@ local BrokenSLights = {}
 local QBCore = exports["qb-core"]:GetCoreObject()
 
 -- Helper function to check if an object is a traffic light
+---@param entity number
+---@return boolean
 local function IsTrafficLight(entity)
 	-- Get the hash model of the entity
 	local model = entity
@@ -42,6 +44,7 @@ local function GetPlayersOnDuty()
 end
 
 -- Function purely COUNTS the amount, this mostly is helpful in doing a singular check
+---@return number
 local function GetCurrentNumberofPW()
 	local DOT = 0
 	for _, Job in pairs(Config.QBJobs) do
@@ -51,6 +54,9 @@ local function GetCurrentNumberofPW()
 	return DOT
 end
 
+-- Helper function to check if an object is a street light
+---@param entity number
+---@return boolean
 local function IsStreetLight(entity)
 	-- Get the hash model of the entity
 	local model = GetEntityModel(entity)
@@ -65,6 +71,7 @@ local function IsStreetLight(entity)
 	return false
 end
 
+-- Helper function to set the traffic light override, I.E. breaking it.
 local function BreakTrafficLight()
 	-- Selects a random traffic light from the server.
 	local selectedLight = TrafficLights[math.random(#TrafficLights)]
@@ -86,6 +93,7 @@ local function BreakTrafficLight()
 	-- TODO: Dispatch Bridge to send to the correct authorities.
 end
 
+-- Helper function to add particle effects for all users to indicate it being broken. This is a visual representation of the broken light due to FiveM limitations.
 local function BreakStreetLight()
 	-- Selects a random street light from the server.
 	local selectedLight = StreetLights[math.random(#StreetLights)]
@@ -138,6 +146,6 @@ Citizen.CreateThread(function()
 			end
 		end
 		-- TODO: Check if someone of the Config.QBJobs is active otherwise just end this loop and only call it if someone is active.
-		Wait(Config.TimeBetweenBreaks * 60000)
+		Wait(Config.TimeBetweenBreaks * 60000) -- Converts it to minutes.
 	end
 end)

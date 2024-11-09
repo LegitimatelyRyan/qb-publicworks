@@ -9,6 +9,8 @@
 
 local Bridge = {}
 
+---@param alert string
+---@param coords table
 function Bridge.SendEmergencyAlert(alert, coords)
 	TriggerClientEvent("cd_dispatch:AddNotification", -1, {
 		job_table = Config.QBJobs,

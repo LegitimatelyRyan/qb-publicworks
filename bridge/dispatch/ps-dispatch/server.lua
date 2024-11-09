@@ -9,6 +9,8 @@
 
 local Bridge = {}
 
+---@param alert string
+---@param coords table
 function Bridge.SendEmergencyAlert(alert, coords)
 	TriggerServerEvent("ps-dispatch:server:notify", {
 		message = alert,
