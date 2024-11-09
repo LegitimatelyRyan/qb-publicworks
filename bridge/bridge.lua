@@ -10,10 +10,10 @@
 local Bridge = {}
 
 -- Function to merge data if resource state is valid
-local function mergeIfResourceActive(resourceName)
+local function mergeIfResourceActive(resourceName, type)
 	if GetResourceState(resourceName) == "started" or GetResourceState(resourceName) == "starting" then
 		-- Gets data.
-		local data = require(resourceName .. ".server")
+		local data = require("bridge." .. (type == 1) and "dispatch" or "minigame" .. resourceName .. ".server")
 
 		-- Checks if data exists and then merges the tables.
 		if data then
@@ -26,7 +26,7 @@ local function mergeIfResourceActive(resourceName)
 end
 
 -- Function to handle resources based on Config and fallback options
-local function integrateResources(resourceList, resource)
+local function integrateResources(resourceList, resource, type)
 	if resource == "auto" then
 		-- If Config is set to auto, iterate through resourceList
 		for _, resourceName in ipairs(resourceList) do
@@ -45,7 +45,7 @@ local dispatchResources = { "cd_dispatch", "ps-dispatch" }
 local minigameResources = { "bl_ui", "ps-ui" }
 
 -- Attempt to integrate Dispatch and Minigame resources based on Config
-integrateResources(dispatchResources, Config.Dispatch)
-integrateResources(minigameResources, Config.Minigame)
+integrateResources(dispatchResources, Config.Dispatch, 1)
+integrateResources(minigameResources, Config.Minigame, 2)
 
 return Bridge
