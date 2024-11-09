@@ -1,3 +1,12 @@
+--[[
+    server.lua
+    This script uses the selected dispatch resource and sends the emergency call to the config jobs.
+
+    Authors: couldthisberyan & baited
+    Resource: qb-publicworks
+    Date: November 9th, 2024
+]]
+
 local Bridge = {}
 
 function Bridge.SendEmergencyAlert(alert, coords)
