@@ -9,27 +9,27 @@
 
 -- Event to play the minigame for the player to fix the fault.
 RegisterNetEvent("qb-publicworks:PlayMinigame:client", function(minigameType)
-	-- ps-ui
-	if minigameType == "Maze" then
-		StartMinigameMaze()
-	elseif minigameType == "Circle" then
-		StartMinigameCircle()
-	elseif minigameType == "Scrambler" then
-		StartMinigameScrambler()
-	elseif minigameType == "Thermite" then
-		StartMinigameThermite()
-	end
+	-- Define lookup tables for minigame functions
+	local psMinigames = {
+		Maze = StartMinigameMaze,
+		Circle = StartMinigameCircle,
+		Scrambler = StartMinigameScrambler,
+		Thermite = StartMinigameThermite,
+	}
 
-	-- bl_ui
-	if minigameType == "CircleProgress" then
-		StartMinigameCircleProgress()
-	elseif minigameType == "Untangle" then
-		StartMinigameUntangle()
-	elseif minigameType == "NumberSlide" then
-		StartMinigameNumberSlide()
-	elseif minigameType == "RapidLines" then
-		StartMinigameRapidLines()
-	end
+	local blMinigames = {
+		CircleProgress = StartMinigameCircleProgress,
+		Untangle = StartMinigameUntangle,
+		NumberSlide = StartMinigameNumberSlide,
+		RapidLines = StartMinigameRapidLines,
+	}
 
-	--TODO: Better management of sending player to the correct function, this way is just inefficient but works, so hey.
+	-- Check and execute the appropriate function based on minigameType
+	if psMinigames[minigameType] then
+		psMinigames[minigameType]()
+	elseif blMinigames[minigameType] then
+		blMinigames[minigameType]()
+	else
+		print("Error: Minigame type not found!")
+	end
 end)
