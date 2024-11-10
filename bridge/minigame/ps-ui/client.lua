@@ -7,6 +7,7 @@
     Date: November 9th, 2024
 ]]
 
+-- This function will start the maze minigame to determine whether the player fixes the fault or not.
 function StartMinigameMaze()
 	exports["ps-ui"]:Maze(function(success)
 		if success then
@@ -20,6 +21,7 @@ function StartMinigameMaze()
     ]]
 end
 
+-- This function will start the circle minigame to determine whether the player fixes the fault or not.
 function StartMinigameCircle()
 	exports["ps-ui"]:Circle(function(success)
 		if success then
@@ -34,6 +36,7 @@ function StartMinigameCircle()
     ]]
 end
 
+-- This function will start the scrambler minigame to determine whether the player fixes the fault or not.
 function StartMinigameScrambler()
 	exports["ps-ui"]:Scrambler(function(success)
 		if success then
@@ -49,6 +52,7 @@ function StartMinigameScrambler()
     ]]
 end
 
+-- This function will start the thermite minigame to determine whether the player fixes the fault or not.
 function StartMinigameThermite()
 	exports["ps-ui"]:Thermite(function(success)
 		if success then

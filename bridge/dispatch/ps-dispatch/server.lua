@@ -9,6 +9,7 @@
 
 local Bridge = {}
 
+-- Sends the emergency call to the selected jobs in the config to inform them of the damage to public works.
 ---@param alert string
 ---@param coords table
 function Bridge.SendEmergencyAlert(alert, coords)

@@ -7,6 +7,7 @@
 	November 9th, 2024
 ]]
 
+-- Event to play the minigame for the player to fix the fault.
 RegisterNetEvent("qb-publicworks:PlayMinigame:client", function(minigameType)
 	-- ps-ui
 	if minigameType == "Maze" then

@@ -7,6 +7,7 @@
     Date: November 9th, 2024
 ]]
 
+-- This function will start the circle progress minigame to determine whether the player fixes the fault or not.
 function StartMinigameCircleProgress()
 	local success = exports["bl_ui"]:CircleProgress(5, 70)
 	--[[
@@ -21,6 +22,7 @@ function StartMinigameCircleProgress()
 	end
 end
 
+-- This function will start the untangle minigame to determine whether the player fixes the fault or not.
 function StartMinigameUntangle()
 	local success = exports["bl_ui"]:Untangle(3, {
 		["numberOfNodes"] = 8, -- Number of nodes, increase for more nodes, decrease for less. (This is the number of points you have to untangle.)
@@ -38,6 +40,7 @@ function StartMinigameUntangle()
 	end
 end
 
+-- This function will start the number slide minigame to determine whether the player fixes the fault or not.
 function StartMinigameNumberSlide()
 	local success = exports["bl_ui"]:NumberSlide(3, 70, 5)
 	--[[
@@ -53,6 +56,7 @@ function StartMinigameNumberSlide()
 	end
 end
 
+-- This function will start the rapid lines minigame to determine whether the player fixes the fault or not.
 function StartMinigameRapidLines()
 	local success = exports["bl_ui"]:RapidLines(3, 70, 5)
 	--[[

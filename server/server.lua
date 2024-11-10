@@ -30,7 +30,7 @@ local function IsTrafficLight(entity)
 	return false
 end
 
---  Return a list of currently on duty players from the QB jobs
+-- Return a list of currently on duty players from the QB jobs
 ---@return table
 local function GetPlayersOnDuty()
 	local Players = {}
