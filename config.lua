@@ -70,7 +70,7 @@ Config.DispatchSystem = "auto"
 	"bl_ui" = https://github.com/Byte-Labs-Studio/bl_ui
 	"ps-ui" = https://github.com/Project-Sloth/ps-ui
 ]]
-Config.Minigame = ""
+Config.Minigame = "auto"
 
 -- Blip information for the emergency call.
 Config.Blip = {
