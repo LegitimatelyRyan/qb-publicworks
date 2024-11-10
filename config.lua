@@ -9,12 +9,14 @@ Config.BreakStreetLights = true -- Set this to false if you dont want street lig
 Config.TimeBetweenBreaks = 5 -- Time in MINUTES before the loop attempts to break another light
 Config.MinimumWorkersRequired = 1 -- Minimum required people to be on duty before the code starts breaking things
 
+-- Job indexes from qb-core.
 Config.QBJobs = {
 	"DOT",
 	"LTA",
 	"LiterallyAnyJobHere",
 }
 
+-- Spawn codes for the traffic lights, alternative can be GetHashKey(modelName) or just the hash.
 Config.TrafficLights = {
 	`prop_traffic_01a`,
 	`prop_traffic_01b`,
@@ -23,6 +25,7 @@ Config.TrafficLights = {
 	`prop_traffic_lightset_01`,
 }
 
+-- Spawn codes for the street lights, alternative can be GetHashKey(modelName) or just the hash.
 Config.StreetLights = {
 	`prop_streetlight_07a`,
 	`prop_streetlight_11a`,
@@ -60,18 +63,19 @@ Config.StreetLights = {
 	"cd" = cd_dispatch
 	"custom" = Integrate your own dispatch script into the resource using the bridge structure.
 ]]
-
 Config.DispatchSystem = "auto"
 
 --[[
+	"auto" = It will look for the resources or default to "custom"
 	"bl_ui" = https://github.com/Byte-Labs-Studio/bl_ui
 	"ps-ui" = https://github.com/Project-Sloth/ps-ui
 ]]
 Config.Minigame = ""
 
-Config.Blip = {}
-
-Config.Blip.Sprite = 64
-Config.Blip.Scale = 1.0
-Config.Blip.Colour = 2
-Config.Blip.Duration = 5
+-- Blip information for the emergency call.
+Config.Blip = {
+	Sprite = 64, -- https://docs.fivem.net/docs/game-references/blips/#blips
+	Scale = 1.0,
+	Colour = 2, -- https://docs.fivem.net/docs/game-references/blips/#blip-colors
+	Duration = 5, -- Seconds.
+}
