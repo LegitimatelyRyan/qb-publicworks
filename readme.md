@@ -6,7 +6,7 @@ Public Works Job for QB-Core Framework 👷
 - [ox-lib](https://github.com/overextended/ox_lib)
 
 ## Integrations
-These are not required and the script will run as intended, but built in functionality is included for the following software.
+These are not required however the script might lack certain functionalities without such, we've built in functionality is included for the following software.
 - [ps-dispatch](https://github.com/Project-Sloth/ps-dispatch)
 - [cd-dispatch](https://codesign.pro/package/4206357)
 - [ps-ui](https://github.com/Project-Sloth/ps-ui)
