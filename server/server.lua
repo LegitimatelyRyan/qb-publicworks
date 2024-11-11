@@ -54,6 +54,17 @@ local function GetCurrentNumberofPW()
 	return DOT
 end
 
+-- Checks to see if the current player is on an authorized job
+---@param source number
+local function IsPlayerAuthorized(source)
+	local Player = QBCore.Functions.GetPlayer(source)
+	local PlayerJob = Player.PlayerData.job
+	if Config.QBJobs[PlayerJob] then
+		return true
+	end
+	return false
+end
+
 -- Helper function to check if an object is a street light
 ---@param entity number
 ---@return boolean
