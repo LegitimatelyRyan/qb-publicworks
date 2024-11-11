@@ -93,7 +93,7 @@ local function BreakTrafficLight()
 	end
 
 	-- Sets this traffic light to have no lighting.
-	SetEntityTrafficlightOverride(selectedLight, 3)
+	-- SetEntityTrafficlightOverride(selectedLight, 3)
 
 	-- Adds the data to the table to allow it to be fixed in the future.
 	BrokenTLights[#BrokenTLights + 1] = {
@@ -115,7 +115,7 @@ local function BreakStreetLight()
 	end
 
 	-- Sets this street light to have no lighting.
-	SetEntityTrafficlightOverride(selectedLight, 3)
+	-- SetEntityTrafficlightOverride(selectedLight, 3)
 
 	-- Adds the data to the table to allow it to be fixed in the future.
 	BrokenSLights[#BrokenSLights + 1] = {

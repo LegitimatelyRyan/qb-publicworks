@@ -7,6 +7,10 @@
 	November 9th, 2024
 ]]
 
+local function BreakTrafficLight(Entity)
+	SetEntityTrafficlightOverride(Entity, 3)
+end
+
 -- Event to play the minigame for the player to fix the fault.
 RegisterNetEvent("qb-publicworks:PlayMinigame:client", function(minigameType)
 	-- Define lookup tables for minigame functions
