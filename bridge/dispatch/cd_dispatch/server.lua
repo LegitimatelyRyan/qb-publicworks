@@ -12,7 +12,7 @@ local Bridge = {}
 -- Sends the emergency call to the selected jobs in the config to inform them of the damage to public works.
 ---@param alert string
 ---@param coords table
-function Bridge.SendEmergencyAlert(alert, coords)
+local function Bridge.SendEmergencyAlert(alert, coords)
 	TriggerClientEvent("cd_dispatch:AddNotification", -1, {
 		job_table = Config.QBJobs,
 		coords = coords,

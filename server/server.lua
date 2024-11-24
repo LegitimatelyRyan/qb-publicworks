@@ -33,25 +33,14 @@ end
 -- Return a list of currently on duty players from the QB jobs
 ---@return table
 local function GetPlayersOnDuty()
-	local Players = {}
-	for _, Job in pairs(Config.QBJobs) do
-		for _, Player in pairs(QBCore.Functions.GetPlayersOnDuty(Job)) do
-			Players[#Players + 1] = Player
+	local players = {}
+	for _, value in pairs(QBCore.Players) do
+		if value.PlayerData.job and Config.QBJobs[value.PlayerData.job] then
+			players[#players + 1] = value.PlayerData.source
 		end
 	end
 
-	return Players
-end
-
--- Function purely COUNTS the amount, this mostly is helpful in doing a singular check
----@return number
-local function GetCurrentNumberofPW()
-	local DOT = 0
-	for _, Job in pairs(Config.QBJobs) do
-		DOT = DOT + #QBCore.Functions.GetPlayersOnDuty(Job)
-	end
-
-	return DOT
+	return players
 end
 
 -- Checks to see if the current player is on an authorized job
@@ -87,13 +76,13 @@ local function BreakTrafficLight()
 	-- Selects a random traffic light from the server.
 	local selectedLight = TrafficLights[math.random(#TrafficLights)]
 
-	-- Utilizes recursion to then always select a unique light entity.
+	-- Utilizes recursion to always select a unique light entity.
 	if lib.table.contains(BrokenTLights, selectedLight) then
 		BreakTrafficLight()
 	end
 
 	-- Sets this traffic light to have no lighting.
-	-- SetEntityTrafficlightOverride(selectedLight, 3)
+	SetEntityTrafficlightOverride(selectedLight, 3)
 
 	-- Adds the data to the table to allow it to be fixed in the future.
 	BrokenTLights[#BrokenTLights + 1] = {
@@ -101,7 +90,8 @@ local function BreakTrafficLight()
 		["coords"] = GetEntityCoords(selectedLight),
 	}
 
-	-- TODO: Dispatch Bridge to send to the correct authorities.
+	-- Sends the emergency alert to the selected jobs in the config.
+	Bridge.SendEmergencyAlert("Damaged Traffic Light", GetEntityCoords(selectedLight))
 end
 
 -- Helper function to add particle effects for all users to indicate it being broken. This is a visual representation of the broken light due to FiveM limitations.
@@ -109,13 +99,10 @@ local function BreakStreetLight()
 	-- Selects a random street light from the server.
 	local selectedLight = StreetLights[math.random(#StreetLights)]
 
-	-- Utilizes recursion to then always select a unique light entity.
+	-- Utilizes recursion to always select a unique light entity.
 	if lib.table.contains(BrokenSLights, selectedLight) then
 		BreakStreetLight()
 	end
-
-	-- Sets this street light to have no lighting.
-	-- SetEntityTrafficlightOverride(selectedLight, 3)
 
 	-- Adds the data to the table to allow it to be fixed in the future.
 	BrokenSLights[#BrokenSLights + 1] = {
@@ -123,7 +110,8 @@ local function BreakStreetLight()
 		["coords"] = GetEntityCoords(selectedLight),
 	}
 
-	-- TODO: Dispatch Bridge to send to the correct authorities.
+	-- Sends the emergency alert to the selected jobs in the config.
+	Bridge.SendEmergencyAlert("Damaged Street Light", GetEntityCoords(selectedLight))
 end
 
 -- Loops through all objects to check models.
@@ -145,7 +133,7 @@ Citizen.CreateThread(function()
 
 	-- Once the objects have been retrieved it will then start this timed loop.
 	while true do
-		if GetCurrentNumberofPW() >= Config.MinimumWorkersRequires then
+		if #GetPlayersOnDuty() >= Config.MinimumWorkersRequires then
 			-- If broken traffic lights are less than the config max then it will break a street light.
 			if Config.MaxTrafficLightsOut < #BrokenTLights then
 				BreakTrafficLight()
@@ -156,7 +144,6 @@ Citizen.CreateThread(function()
 				BreakStreetLight()
 			end
 		end
-		-- TODO: Check if someone of the Config.QBJobs is active otherwise just end this loop and only call it if someone is active.
 		Wait(Config.TimeBetweenBreaks * 60000) -- Converts it to minutes.
 	end
 end)

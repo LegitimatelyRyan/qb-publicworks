@@ -36,13 +36,13 @@ local function integrateResources(resourceList, resource, type)
 	if resource == "auto" then
 		-- If Config is set to auto, iterate through resourceList
 		for _, resourceName in ipairs(resourceList) do
-			if mergeIfResourceActive(resourceName) then
+			if mergeIfResourceActive(resourceName, type) then
 				break
 			end
 		end
 	else
 		-- If Config is set to a specific resource
-		mergeIfResourceActive(resource)
+		mergeIfResourceActive(resource, type)
 	end
 end
 

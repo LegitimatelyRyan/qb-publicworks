@@ -9,7 +9,7 @@
 
 local Bridge = {}
 
-function Bridge.ChooseMinigame()
+local function Bridge.ChooseMinigame()
 	-- Array of minigame types
 	local minigameTypes = { "Maze", "Circle", "Scrambler", "Thermite" }
 
@@ -19,7 +19,7 @@ function Bridge.ChooseMinigame()
 	return selectedMinigame
 end
 
-function Bridge.PlayMinigame()
+local function Bridge.PlayMinigame()
 	-- Gets random minigame type.
 	local minigameType = Bridge.ChooseMinigame()
 

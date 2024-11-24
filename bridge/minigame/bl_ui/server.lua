@@ -10,7 +10,7 @@
 local Bridge = {}
 
 -- Randomizes the minigame type to be played.
-function Bridge.ChooseMinigame()
+local function Bridge.ChooseMinigame()
 	-- Array of minigame types
 	local minigameTypes = { "CircleProgress", "Untangle", "NumberSlide", "RapidLines" }
 
@@ -21,7 +21,7 @@ function Bridge.ChooseMinigame()
 end
 
 -- Sends the minigame type to the client for it to be played.
-function Bridge.PlayMinigame()
+local function Bridge.PlayMinigame()
 	-- Gets random minigame type.
 	local minigameType = Bridge.ChooseMinigame()
 
