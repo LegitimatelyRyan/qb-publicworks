@@ -82,7 +82,8 @@ local function BreakTrafficLight()
 	end
 
 	-- Sets this traffic light to have no lighting.
-	SetEntityTrafficlightOverride(selectedLight, 3)
+	-- DO NOT UNCOMMENT!!!!! this has to be client-sided
+	-- SetEntityTrafficlightOverride(selectedLight, 3)
 
 	-- Adds the data to the table to allow it to be fixed in the future.
 	BrokenTLights[#BrokenTLights + 1] = {
